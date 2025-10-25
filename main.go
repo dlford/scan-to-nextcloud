@@ -69,6 +69,10 @@ func processUser(user UserConfig, config Config) {
 		return
 	}
 
+	if len(files) == 0 {
+		return
+	}
+
 	webdavOutputPath := fmt.Sprintf("%s/remote.php/dav/files/%s/%s", config.NextcloudURL, user.Username, user.OutputFolder)
 	req, err := http.NewRequest("MKCOL", webdavOutputPath, nil)
 	if err != nil {
